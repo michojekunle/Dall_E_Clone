@@ -14,11 +14,28 @@ const Home = () => {
   const [allPosts, setAllPosts] = useState(null);
 
   const [searchText, setSearchText] = useState('');
+  const [searchedResults, setSearchedResults] = useState(null);
+  const [serarchTimeout, setSearchTimeout] = useState()
+
+  const handleSearchChange = (e) {
+    clearInterval(serarchTimeout);
+    setSearchText(e.target.value);
+
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResults = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase()))
+
+        setSearchedResults(searchResults);
+      }, 500)
+    );
+
+    set
+  }
 
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true)
-      
+
       try {
         const response = await fetch('http://localhost:8080/api/v1/posts', {
           method: 'GET',
@@ -33,9 +50,10 @@ const Home = () => {
           setAllPosts(result.data.reverse());
         }
       } catch (error) {
-        
+        alert(error);
+        console.log(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
 
@@ -50,7 +68,14 @@ const Home = () => {
       </div>
 
       <div className="mt-16">
-        <FormField/>
+        <FormField
+          labelName='Search Posts'
+          type='text'
+          name='text'
+          placeholder="SearcH Posts"
+          value={searchText}
+          handleChange={handleSearchChange}
+        />
       </div>
 
       <div className="mt-10">
@@ -66,7 +91,7 @@ const Home = () => {
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
               {searchText ? (
                 <RenderCards
-                  data={allPosts} 
+                  data={searchedResults}
                   title="No search results found"
                 />) : (
                   <RenderCards
