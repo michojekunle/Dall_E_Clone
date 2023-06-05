@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Loader, FormField, Card } from '../components';
+import { API_BASE_URL } from '../constants';
 
 const RenderCards = ({data, title}) => {
   if(data?.length > 0) return data.map((post) => <Card key={post._id} {...post}/>)
@@ -35,7 +36,7 @@ const Home = () => {
       setLoading(true)
 
       try {
-        const response = await fetch('http://localhost:8080/api/v1/posts', {
+        const response = await fetch(`${API_BASE_URL}/posts`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
