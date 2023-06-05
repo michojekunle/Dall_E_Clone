@@ -15,10 +15,10 @@ const Home = () => {
 
   const [searchText, setSearchText] = useState('');
   const [searchedResults, setSearchedResults] = useState(null);
-  const [serarchTimeout, setSearchTimeout] = useState()
+  const [searchTimeout, setSearchTimeout] = useState()
 
-  const handleSearchChange = (e) {
-    clearInterval(serarchTimeout);
+  const handleSearchChange = (e) => {
+    clearInterval(searchTimeout);
     setSearchText(e.target.value);
 
     setSearchTimeout(
@@ -27,9 +27,7 @@ const Home = () => {
 
         setSearchedResults(searchResults);
       }, 500)
-    );
-
-    set
+    )
   }
 
   useEffect(() => {
@@ -72,7 +70,7 @@ const Home = () => {
           labelName='Search Posts'
           type='text'
           name='text'
-          placeholder="SearcH Posts"
+          placeholder="Search Posts"
           value={searchText}
           handleChange={handleSearchChange}
         />
