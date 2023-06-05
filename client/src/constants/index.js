@@ -48,4 +48,4 @@ export const surpriseMePrompts = [
     'A Space Shuttle flying above Cape Town, digital art',
     ];
 
-export const API_BASE_URL = `${import.meta.env.API_BASE_URL}/api/v1`;
+export const API_BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1`;
