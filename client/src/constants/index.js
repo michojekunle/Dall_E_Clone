@@ -47,3 +47,5 @@ export const surpriseMePrompts = [
     'A man wanders through the rainy streets of Tokyo, with bright neon signs, 50mm',
     'A Space Shuttle flying above Cape Town, digital art',
     ];
+
+export const API_BASE_URL = `${import.meta.env.API_BASE_URL}/api/v1`;
