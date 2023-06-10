@@ -22,7 +22,7 @@ const CreatePost = () => {
     if(form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/posts', {
+        const response = await fetch(`${API_BASE_URL}/posts`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ const CreatePost = () => {
         await response.json();
 
         navigate('/');
-      } catch (error) {
+      } catch (err) {
         alert(err);
       } finally {
         setLoading(false);
