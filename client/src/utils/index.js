@@ -17,7 +17,7 @@ export async function downloadImage(_id, photo) {
     base_image.src = photo;
     
     var canvas = document.getElementById("MyCanvas");
-    context = canvas.getContext('2d');
+    var context = canvas.getContext('2d');
 
     // Draw image within
     context.drawImage(base_image, 0,0);
