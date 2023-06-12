@@ -13,7 +13,7 @@ export function getRandomPrompt(prompt) {
 }
 
 export async function downloadImage(_id, photo) {
-    base_image = new Image();
+    const base_image = new Image();
     base_image.src = photo;
     
     var canvas = document.getElementById("MyCanvas");
