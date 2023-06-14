@@ -21,7 +21,7 @@ export async function downloadImage(_id, photo, canvasRef) {
     console.log(canvas, context);
 
     // Draw image within
-    context.drawImage(base_image, 300, 300);
+    context.drawImage(base_image, 20, 20, 300, 300);
     console.log(canvas, context);
     
     // Save the canvas
