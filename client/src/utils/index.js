@@ -18,12 +18,15 @@ export async function downloadImage(_id, photo, canvasRef) {
     
     var canvas = canvasRef.current;
     var context = canvas.getContext('2d');
+    console.log(canvas, context);
 
     // Draw image within
     context.drawImage(base_image, 0,0);
+    console.log(canvas, context);
     
     // Save the canvas
     saveCanvas(canvas, _id);
+    console.log(canvas, context);
 }
 
 function saveCanvas(x_canvas, _id){
