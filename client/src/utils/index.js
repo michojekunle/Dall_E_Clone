@@ -12,11 +12,11 @@ export function getRandomPrompt(prompt) {
     return randomPrompt
 }
 
-export async function downloadImage(_id, photo) {
+export async function downloadImage(_id, photo, canvasRef) {
     const base_image = new Image();
     base_image.src = photo;
     
-    var canvas = document.getElementById("MyCanvas");
+    var canvas = canvasRef.current;
     var context = canvas.getContext('2d');
 
     // Draw image within
